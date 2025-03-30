@@ -1,16 +1,80 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Lebaran 1443H</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="script.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebaran 1443H</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
-
 <body>
-</body>
+    <button id="startAlert" class="btn btn-success">Klik untuk Ucapan Lebaran</button>
 
+    <div class="modal fade" id="lebaranModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Selamat Hari Raya Idul Fitri !! Minal Aidin Wal Faizin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                </div>
+                <div class="modal-footer">
+                    <button id="nextMessage" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("startAlert").onclick = function() {
+            var nama = prompt("Assalamualaikum, selamat lebaran ya. Nama kamu siapa?");
+            if (nama) {
+                var messages = [
+                    `Oke ${nama}, maafin ya kalau ada salah`,
+                    "Salah kata 😬", 
+                    "Salah perbuatan 🤏", 
+                    "Salah transfer 💵", 
+                    `Ataupun salah menaruh rasa kepada ${nama} 🤗`,
+                    "Boleh dong THR-nya, Gopay: 671457902"
+                ];
+                
+                var index = 0;
+                var modalBody = document.getElementById("modalBody");
+                var nextButton = document.getElementById("nextMessage");
+                var modal = new bootstrap.Modal(document.getElementById('lebaranModal'));
+                
+                function showMessage() {
+                    if (index < messages.length) {
+                        modalBody.innerHTML = messages[index];
+                        modal.show();
+                        index++;
+                    } else {
+                        modal.hide();
+                    }
+                }
+                
+                nextButton.onclick = showMessage;
+                showMessage();
+            }
+        };
+    </script>
+</body>
 </html>
