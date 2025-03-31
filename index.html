@@ -21,11 +21,15 @@
             border: none;
             border-radius: 5px;
         }
+        #danaButton {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <button id="startAlert" class="btn btn-success">Klik untuk Ucapan Lebaran</button>
-
+    
     <div class="modal fade" id="lebaranModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -33,15 +37,16 @@
                     <h5 class="modal-title" id="exampleModalLabel">Selamat Hari Raya Idul Fitri !! Minal Aidin Wal Faizin</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="modalBody">
-                </div>
+                <div class="modal-body" id="modalBody"></div>
                 <div class="modal-footer">
                     <button id="nextMessage" class="btn btn-primary">OK</button>
                 </div>
             </div>
         </div>
     </div>
-
+    <br>
+    <a id="danaButton" href="https://link.dana.id/danakaget?c=sy7hcpu64&r=bBJ4vo&orderId=20250331101214051315010300166641515099503" class="btn btn-warning">🎉 Ambil DANA Kaget 🎉</a>
+    
     <script>
         document.getElementById("startAlert").onclick = function() {
             var nama = prompt("Assalamualaikum, selamat lebaran ya. Nama kamu siapa sihh?");
@@ -67,6 +72,7 @@
                         index++;
                     } else {
                         modal.hide();
+                        document.getElementById("danaButton").style.display = "inline-block";
                     }
                 }
                 
